@@ -7,7 +7,7 @@ from functions import myplot
 
 DEBUG = True
 
-results_one, results_two = myplot.start_plot(user_param='elsewhere')
+results_one, results_two = myplot.start_plot(user_param='/path/relative/to/home/user_parameters.yaml')
 
 if DEBUG:
     print(results_one, results_two)
