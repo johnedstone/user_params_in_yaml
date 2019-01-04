@@ -14,7 +14,7 @@ if DEBUG:
 def start_plot(user_param=None):
     
     if user_param == 'local':
-        user_params = yaml.load(open('user_parameters.yaml'))
+        user_params = yaml.safe_load(open('user_parameters.yaml'))
 
         logging.info('user_params: {}'.format(user_params))
         
