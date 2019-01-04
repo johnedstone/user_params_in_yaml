@@ -1,5 +1,5 @@
 ### Purpose
-This repository has been created to move from using user data in Python file to a user input file using yaml.
+This repository has been created to demonstrate changing from the pattern of putting one's user_parameters in a Python file to the pattern of using a `user_parameters.yaml` file.
 
 * The assumed project is called **Waterloo**
 * This code should run on both Windows and Linux
@@ -8,8 +8,8 @@ This repository has been created to move from using user data in Python file to 
 
 #### Data and Code Directories: project_data/Waterloo and project_code/Waterloo
 * Note that the data and the code directories are in separate places. That is, let's assume your data files and any output files are completely separated from your code directory.
-* Filepaths or relative to one's Home Directory, using forward slashes (/) for both Windows and Linux
-* Three options are provide:
+* File paths are relative to one's Home Directory, using forward slashes (/) for both Windows and Linux
+* Three options are provided:
 
     * run_me_my_vars_are_here.py: is for the case where one puts their custom vars in the code directory - common, but you may want to separate it and put it in your data directory.
     * run_me_my_vars_are_elsewhere.py is for the case where one puts their custom vars elsewhere, e.g. in one's project_data directory
