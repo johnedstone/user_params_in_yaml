@@ -4,26 +4,33 @@
 Remove: ~/zappa-git/zappa-webscrape/mw/heavy_lifting.py
 '''
 
-import sys, yaml
+import logging, sys, yaml
 
-DEBUG = True
+DEBUG = False
+
+if DEBUG:
+    logging.basicConfig(level=logging.INFO)
 
 def start_plot(user_param=None):
     
     if user_param == 'local':
         user_params = yaml.load(open('user_parameters.yaml'))
 
-        if DEBUG:
-            print('user_params: {}'.format(user_params))
+        logging.info('user_params: {}'.format(user_params))
         
     elif user_param == 'sample':
         pass
     else:
         try:
-            pass
+            with open('boo', 'r') as fh:
+                data = fh.readlines
+
         except Exception as e:
 
-            print('Something is awry: {}'.format(e))
+            logging.error('''Something is awry:
+            {}
+            '''.format(e))
+
             sys.exit('''
             Exiting ...
             ''')

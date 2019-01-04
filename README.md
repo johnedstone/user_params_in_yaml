@@ -3,7 +3,10 @@ This repository has been created to demonstrate changing from the pattern of put
 
 * The assumed project is called **Waterloo**
 * This code should run on both Windows and Linux
-* There is variable called DEBUG, related to printing and logging
+* There is variable called DEBUG (True or False) related to logging. No longing using print, as it is better practice to use the python logging facility
+
+    * Reference for python logging: (Link)[https://docs.python.org/3/howto/logging.html#logging-basic-tutorial]
+
 * This project will demonstrate using print statments as well as Python's built-in logging.
 
 #### Data and Code Directories: project_data/Waterloo and project_code/Waterloo
