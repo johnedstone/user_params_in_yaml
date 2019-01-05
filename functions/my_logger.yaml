@@ -1,0 +1,32 @@
+version: 1
+formatters:
+  simple:
+    format: '%(levelname)s:%(filename)s:%(lineno)s:%(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  console_info:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stdout
+  console_warning:
+    class: logging.StreamHandler
+    level: WARNING
+    formatter: simple
+    stream: ext://sys.stdout
+loggers:
+  log_info:
+    level: INFO
+    handlers: [console_info]
+    propagate: no
+  log_warning:
+    level: WARNING
+    handlers: [console_warning]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console]

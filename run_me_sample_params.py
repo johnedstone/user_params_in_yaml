@@ -2,18 +2,27 @@
 """
 This file will use the file functions/user_parameters.py which may have been how you started
 """
+
 import logging
+import logging.config
+import yaml
+
 from functions import myplot
 
 DEBUG = True
 
+with open('functions/my_logger.yaml', 'r') as f:
+    config = yaml.safe_load(f.read())
+    logging.config.dictConfig(config)
+
 if DEBUG:
-    logging.basicConfig(format='%(levelname)s:%(filename)s:%(lineno)s:%(message)s', level=logging.INFO)
+    logger = logging.getLogger('log_info')
+else:
+    logger = logging.getLogger('log_warning')
 
 results_one, results_two = myplot.start_plot(user_param='sample')
 
-if DEBUG:
-    logging.info('''
+logger.info('''
     results_one: {}
     results_two: {}
     '''.format(results_one, results_two))

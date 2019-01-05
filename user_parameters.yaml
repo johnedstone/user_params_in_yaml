@@ -3,4 +3,4 @@ mountain_depth: 22 # A comment
 data_file: /projects_data/waterloo/data/waterloo_data.csv # Another comment
 image_directory: /projects_data/waterloo/images
 title_for_graphing: Waterloo 2019
-# user_parameter parameter is optional and only used if user_parameter.yaml is elsewhere
+optional_parameter: 107.10

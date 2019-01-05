@@ -10,6 +10,6 @@ mountain_depth = 22
 data_file = '/projects_data/waterloo/data/waterloo_data.csv'
 image_directory = '/projects_data/waterloo/images'
 title_for_graphing = 'Waterloo 2019'
-# user_parameter parameter is optional and only used if user_parameter.yaml is elsewhere
+optional_parameter = 107.10
 
 # vim: ai et ts=4 sw=4 sts=4 nu ru

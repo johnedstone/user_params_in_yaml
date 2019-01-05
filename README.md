@@ -4,8 +4,10 @@ This repository has been created to demonstrate changing from the pattern of put
 * The assumed project is called **Waterloo**
 * This code should run on both Windows and Linux
 * There is variable called DEBUG (True or False) related to logging.
+* Reference for python logging
 
-    * Reference for python logging: (Link)[https://docs.python.org/3/howto/logging.html#logging-basic-tutorial]
+    * https://docs.python.org/3/howto/logging.html#logging-basic-tutorial
+    * https://docs.python.org/3/howto/logging.html#loggers 
 
 #### Data and Code Directories: project_data/Waterloo and project_code/Waterloo
 * Note that the data and the code directories are in separate places.
