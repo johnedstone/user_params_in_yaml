@@ -6,10 +6,10 @@ Remove: ~/zappa-git/zappa-webscrape/mw/heavy_lifting.py
 
 import logging, sys, yaml
 
-DEBUG = False
+DEBUG = True
 
 if DEBUG:
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(format='%(levelname)s:%(filename)s:%(lineno)s:%(message)s', level=logging.INFO)
 
 def start_plot(user_param=None):
     
