@@ -2,18 +2,28 @@
 """
 This file will use the file user_parameters.yaml in some other directory, e.g. in your data directory
 """
+
 import logging
+import logging.config
+import yaml
+
 from functions import myplot
 
-DEBUG = True
+DEBUG = False
+
+with open('functions/my_logger.yaml', 'r') as f:
+    config = yaml.safe_load(f.read())
+    logging.config.dictConfig(config)
 
 if DEBUG:
-    logging.basicConfig(format='%(levelname)s:%(filename)s:%(lineno)s:%(message)s', level=logging.INFO)
+    logger = logging.getLogger('log_info')
+else:
+    logger = logging.getLogger('log_warning')
 
-results_one, results_two = myplot.start_plot(user_param='/path/relative/to/home/user_parameters.yaml')
+results_one, results_two = myplot.start_plot(user_param_file='/projects_data/waterloo/user_parameters_elsewhere.yaml')
 
 if DEBUG:
-    logging.info('''
+    logger.info('''
     results_one: {}
     results_two: {}
     '''.format(results_one, results_two))

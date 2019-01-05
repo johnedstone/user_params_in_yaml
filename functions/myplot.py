@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import logging, sys, yaml
+from pathlib import Path
+import pandas as pd
 
-DEBUG = True
+DEBUG = False # Set to True for debugging information
 
 with open('functions/my_logger.yaml', 'r') as f:
     config = yaml.safe_load(f.read())
@@ -20,8 +22,12 @@ class UserParams():
     def __init__(self, **kwargs):
         self.mountain_height = kwargs['mountain_height']
         self.mountain_depth = kwargs['mountain_depth']
-        self.data_file = kwargs['data_file']
-        self.image_directory = kwargs['image_directory']
+        self.data_file = Path('{}/{}'.format(
+                                  Path.home(),
+                                  kwargs['data_file']))
+        self.image_directory = Path('{}/{}'.format(
+                                   Path.home(),
+                                   kwargs['image_directory']))
         self.title_for_graphing = kwargs['title_for_graphing']
 
         if 'optional_parameter' in kwargs:
@@ -51,29 +57,38 @@ def log_up(up):
         up.optional_parameter, type(up.optional_parameter),
         ))
 
-def start_plot(user_param=None):
+def convert_yaml(yaml_file):
+    """
+    Takes yaml file, converts to dictionary, create up object
+    """
+
+    logger.info('yaml_file: {}'.format(yaml_file))
+    up_prep = yaml.safe_load(open(yaml_file))
+    logger.info('up_prep_dictionary: {}'.format(up_prep))
+        
+    up = UserParams(**up_prep)
+    log_up(up)
+
+    return up
+
+def start_plot(user_param_file=None):
     """
     Get user parameters as up, and run myplot
     """
     
-    if user_param == 'local':
-        # turn yaml into a dictionary
-        up_prep = yaml.safe_load(open('user_parameters.yaml'))
-
-        logger.info('up_prep: {}'.format(up_prep))
+    if user_param_file == 'local':
+        up = convert_yaml('user_parameters.yaml')
         
-        up = UserParams(**up_prep) # This passes the use_params dictionary to creating the object
-
-        _ = log_up(up)
-        
-    elif user_param == 'sample':
+    elif user_param_file == 'sample':
         import functions.user_parameters as up
-        _ = log_up(up)
+        log_up(up)
 
     else:
         try:
-            with open('boo', 'r') as fh:
-                data = fh.readlines
+            user_param_file_prep = Path('{}/{}'.format(
+                                       Path.home(),
+                                       user_param_file))
+            up = convert_yaml(user_param_file_prep)
 
         except Exception as e:
 
@@ -87,12 +102,40 @@ def start_plot(user_param=None):
 
 
     # Okay, up is now defined
-    results_one, results_two = myplot()
+    results_one, results_two = myplot(up=up)
 
     return results_one, results_two
 
-def myplot():
+def myplot(up=None):
+    """
+    Taking the user paramaeters, or sample parameters and do plots
+    """
 
+    if not up:
+        logger.error('''
+        Woa!
+        The User parameters or sample parameters are missing!!
+        Exiting ....
+        ''')
+
+        sys.exit()
+
+    df = pd.read_csv(up.data_file, header=None)
+
+    logger.info('''
+    DataFrame: 
+    {}
+    '''.format(df))
+
+    logger.info('''
+    DataFrame.shape: 
+    {}
+    '''.format(df.shape))
+
+    logger.info('''
+    DataFrame.dtypes: 
+    {}
+    '''.format(df.dtypes))
 
     return 'boo', 'hoo'
 

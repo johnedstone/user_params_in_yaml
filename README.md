@@ -1,3 +1,8 @@
+### Summary
+
+* Run one of the three files below, depending on how you choose to organize your code and data.
+* Read below for more information
+
 ### Purpose
 This repository has been created to demonstrate changing from the pattern of putting the user parameters in a Python file to the pattern of using a `user_parameters.yaml` file.
 
@@ -20,3 +25,12 @@ This repository has been created to demonstrate changing from the pattern of put
     * run_me_my_params_are_here.py: is for the case where one puts their custom params in the code directory. This is a common practice, but you may want to put it in your project data directory.
     * run_me_my_params_are_elsewhere.py is for the case where one puts their custom params elsewhere, e.g. in one's project_data directory
     * run_me_sample_params.py: is for running some sample params, and this is the old way, demonstrating putting one's sample params in a python file
+
+#### Notes on extra files placed here for example
+
+    * `user_parameters_elsewhere.yaml` would be in some other directory, if used outside this code base
+    * `waterloo_data.csv` would be outside this code structure
+
+#### To do
+
+    * Demonstrate writing files to image directory

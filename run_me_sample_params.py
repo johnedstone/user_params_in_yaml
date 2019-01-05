@@ -9,7 +9,7 @@ import yaml
 
 from functions import myplot
 
-DEBUG = True
+DEBUG = False
 
 with open('functions/my_logger.yaml', 'r') as f:
     config = yaml.safe_load(f.read())
@@ -20,7 +20,7 @@ if DEBUG:
 else:
     logger = logging.getLogger('log_warning')
 
-results_one, results_two = myplot.start_plot(user_param='sample')
+results_one, results_two = myplot.start_plot(user_param_file='sample')
 
 logger.info('''
     results_one: {}
