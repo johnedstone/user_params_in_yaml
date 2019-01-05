@@ -5,7 +5,8 @@ import pandas as pd
 
 DEBUG = False # Set to True for debugging information
 
-with open('functions/my_logger.yaml', 'r') as f:
+logger_path = Path('{}/functions/my_logger.yaml'.format(Path.name(__file__)))
+with open(logger_path, 'r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 
