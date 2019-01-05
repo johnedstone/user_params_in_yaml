@@ -12,8 +12,8 @@ from functions import myplot
 
 DEBUG = False
 
-logger_path = Path('{}/functions/my_logger.yaml'.format(PurePath(__file__).parent))
-with open(str(logger_path), 'r') as f:
+p = Path('{}/functions/my_logger.yaml'.format(PurePath(__file__).parent))
+with p.open('r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 

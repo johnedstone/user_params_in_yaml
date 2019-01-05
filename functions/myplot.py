@@ -6,8 +6,8 @@ import pandas as pd
 
 DEBUG = True # Set to True for debugging information
 
-logger_path = Path('{}/my_logger.yaml'.format(PurePath(__file__).parent))
-with open(str(logger_path), 'r') as f:
+p = Path('{}/my_logger.yaml'.format(PurePath(__file__).parent))
+with p.open('r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 
@@ -59,13 +59,13 @@ def log_up(up):
         up.optional_parameter, type(up.optional_parameter),
         ))
 
-def convert_yaml(yaml_file):
+def convert_yaml(p):
     """
     Takes yaml file, converts to dictionary, create up object
     """
 
-    logger.info('yaml_file: {}'.format(yaml_file))
-    up_prep = yaml.safe_load(open(yaml_file))
+    logger.info('yaml_file: {}'.format(p))
+    up_prep = yaml.safe_load(p.open())
     logger.info('up_prep_dictionary: {}'.format(up_prep))
         
     up = UserParams(**up_prep)
@@ -79,8 +79,8 @@ def start_plot(user_param_file=None):
     """
     
     if user_param_file == 'local':
-        user_param_file_prep = Path('{}/user_parameters.yaml'.format(PurePath(__file__).parent.parent))
-        up = convert_yaml(str(user_param_file_prep))
+        p = Path('{}/user_parameters.yaml'.format(PurePath(__file__).parent.parent))
+        up = convert_yaml(p)
         
     elif user_param_file == 'sample':
         import functions.user_parameters as up
@@ -88,10 +88,10 @@ def start_plot(user_param_file=None):
 
     else:
         try:
-            user_param_file_prep = Path('{}/{}'.format(
-                                       Path.home(),
-                                       user_param_file))
-            up = convert_yaml(str(user_param_file_prep))
+            p = Path('{}/{}'.format(
+                           Path.home(),
+                           user_param_file))
+            up = convert_yaml(p)
 
         except Exception as e:
 
