@@ -4,17 +4,15 @@
 
 ### Summary
 
-* Run one of the three files below, depending on how you choose to organize your code and data.
+* Run one of the four files below, depending on how you choose to organize your code and data.
 ```
+python run_me_barebones.py
 python run_me_my_params_are_here.py
 python run_me_my_params_are_elsewhere.py
 python run_me_sample_params.py
 ```
 
-
-
-
-
+* Besides demonstrating use yaml for users params, also demonstrates logging, and pathlib for Windows and Linux.  This code works on Linux cli, Linux Canopy, and Windows Spyder
 * Read below for more information
 
 ### Purpose
@@ -34,8 +32,9 @@ This repository has been created to demonstrate changing from the pattern of put
     * That is, let's assume your data files and any output files are completely separated from your code directory.
 
 * File paths are relative to one's Home Directory, using forward slashes (/) for both Windows and Linux
-* Three options are provided:
+* Four options are provided:
 
+    * `run_me_barebones.py`: the simplest solution, no logging, assumes user_params.yaml is in code directory
     * `run_me_my_params_are_here.py`: is for the case where one puts their custom params in the code directory. This is a common practice, but you may want to put it in your project data directory.
     * `run_me_my_params_are_elsewhere.py` is for the case where one puts their custom params elsewhere, e.g. in one's project_data directory
     * `run_me_sample_params.py`: is for running some sample params, and this is the old way, demonstrating putting one's sample params in a python file
