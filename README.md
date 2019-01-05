@@ -1,3 +1,7 @@
+### Updates
+
+* **Simplest:** added `run_me_barebones.py`. Start with this file for **simplest solution**
+
 ### Summary
 
 * Run one of the three files below, depending on how you choose to organize your code and data.
