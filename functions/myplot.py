@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import logging, sys, yaml
-from pathlib import Path
+from pathlib import Path, PurePath
 import pandas as pd
 
-DEBUG = False # Set to True for debugging information
+DEBUG = True # Set to True for debugging information
 
-logger_path = Path('{}/functions/my_logger.yaml'.format(Path.name(__file__)))
-with open(logger_path, 'r') as f:
+logger_path = Path('{}/my_logger.yaml'.format(PurePath(__file__).parent))
+with open(str(logger_path), 'r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 
@@ -78,7 +78,8 @@ def start_plot(user_param_file=None):
     """
     
     if user_param_file == 'local':
-        up = convert_yaml('user_parameters.yaml')
+        user_param_file_prep = Path('{}/user_parameters.yaml'.format(PurePath(__file__).parent.parent))
+        up = convert_yaml(str(user_param_file_prep))
         
     elif user_param_file == 'sample':
         import functions.user_parameters as up
@@ -89,7 +90,7 @@ def start_plot(user_param_file=None):
             user_param_file_prep = Path('{}/{}'.format(
                                        Path.home(),
                                        user_param_file))
-            up = convert_yaml(user_param_file_prep)
+            up = convert_yaml(str(user_param_file_prep))
 
         except Exception as e:
 
@@ -124,9 +125,9 @@ def myplot(up=None):
     df = pd.read_csv(up.data_file, header=None)
 
     logger.info('''
-    DataFrame: 
+    DataFrame.head(n=4): 
     {}
-    '''.format(df))
+    '''.format(df.head(n=4)))
 
     logger.info('''
     DataFrame.shape: 

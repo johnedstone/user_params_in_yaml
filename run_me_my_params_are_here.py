@@ -5,16 +5,16 @@ This file will use the file user_parameters.yaml in this current directory.
 
 import logging
 import logging.config
+import sys
 import yaml
 
 from pathlib import Path, PurePath
 from functions import myplot
 
-DEBUG = False
+DEBUG = True
 
-sys.exit()
-logger_path = Path('{}/functions/my_logger.yaml'.format(PurePath.name(__file__)))
-with open(logger_path, 'r') as f:
+logger_path = Path('{}/functions/my_logger.yaml'.format(PurePath(__file__).parent))
+with open(str(logger_path), 'r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 

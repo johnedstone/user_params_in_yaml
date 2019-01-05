@@ -7,11 +7,13 @@ import logging
 import logging.config
 import yaml
 
+from pathlib import Path, PurePath
 from functions import myplot
 
 DEBUG = False
 
-with open('functions/my_logger.yaml', 'r') as f:
+logger_path = Path('{}/functions/my_logger.yaml'.format(PurePath(__file__).parent))
+with open(str(logger_path), 'r') as f:
     config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
 
@@ -20,7 +22,7 @@ if DEBUG:
 else:
     logger = logging.getLogger('log_warning')
 
-results_one, results_two = myplot.start_plot(user_param_file='/projects_data/waterloo/user_parameters_elsewhere.yaml')
+results_one, results_two = myplot.start_plot(user_param_file='projects_data/waterloo/user_parameters_elsewhere.yaml')
 
 if DEBUG:
     logger.info('''
