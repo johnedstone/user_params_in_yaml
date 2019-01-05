@@ -1,6 +1,16 @@
 ### Summary
 
 * Run one of the three files below, depending on how you choose to organize your code and data.
+```
+python run_me_my_params_are_here.py
+python run_me_my_params_are_elsewhere.py
+python run_me_sample_params.py
+```
+
+
+
+
+
 * Read below for more information
 
 ### Purpose
