@@ -38,8 +38,8 @@ This repository has been created to demonstrate changing from the pattern of put
 
 #### Notes on extra files placed here for example
 
-    * `user_parameters_elsewhere.yaml` would be in some other directory, if used outside this code base
-    * `waterloo_data.csv` would be outside this code structure
+* `user_parameters_elsewhere.yaml` would be in some other directory, if used outside this code base
+* `waterloo_data.csv` would be outside this code structure
 
 #### To do
 
