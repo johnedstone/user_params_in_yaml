@@ -23,12 +23,12 @@ class UserParams():
     def __init__(self, **kwargs):
         self.mountain_height = kwargs['mountain_height']
         self.mountain_depth = kwargs['mountain_depth']
-        self.data_file = Path('{}/{}'.format(
+        self.data_file = str(Path('{}/{}'.format(
                                   Path.home(),
-                                  kwargs['data_file']))
-        self.image_directory = Path('{}/{}'.format(
+                                  kwargs['data_file'])))
+        self.image_directory = str(Path('{}/{}'.format(
                                    Path.home(),
-                                   kwargs['image_directory']))
+                                   kwargs['image_directory'])))
         self.title_for_graphing = kwargs['title_for_graphing']
 
         if 'optional_parameter' in kwargs:
