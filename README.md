@@ -12,7 +12,7 @@ python run_me_my_params_are_elsewhere.py
 python run_me_sample_params.py
 ```
 
-* Besides demonstrating use yaml for users params, also demonstrates logging, and pathlib for Windows and Linux.  This code works on Linux cli, Linux Canopy, and Windows Spyder
+* Besides demonstrating using yaml for users params, also demonstrates logging, and pathlib for Windows and Linux.  This code works on Linux cli, Linux Canopy, and Windows Spyder
 * Read below for more information
 
 ### Purpose
